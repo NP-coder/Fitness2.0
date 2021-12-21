@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Fitness.Models.Athletics>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Заняття спортом</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Athletics" asp-action="AthleticsCreate" class="btn btn-primary">Додати нове тренування</a>
+        </div>
+    </div>
+    <br/>
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Вправа
+                    </th>
+                    <th>
+                        Тривалість
+                    </th>
+                    <th>
+                        Час занять
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var athletics in Model)
+                {
+                    <tr>
+                        <td width="33%">@athletics.Exercise.Name</td>
+                        <td width="33%">@athletics.Duration</td>
+                        <td width="33%">@athletics.Timeofday</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No items created yet</p>
+    }
+
+</div>

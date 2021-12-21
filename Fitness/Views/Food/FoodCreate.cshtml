@@ -1,0 +1,61 @@
+﻿@model Fitness.Models.Food
+
+<form method="post" asp-action="FoodCreate">
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Додати прийом їжі</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label>Користувач</label>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="ProductId"></label>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="Number"></label>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="Timeofday"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label>@User.Identity.Name</label>
+                    </div>
+                    <div class="col-3">
+                        <select asp-for="ProductId" asp-items ="@ViewBag.FoodDropDown" class="form-control" ></select>                    
+                        <span asp-validation-for="ProductId" class="text-danger"></span>
+                    </div>
+                    <div class="col-3">
+                        <input asp-for="Number" class="form-control" />
+                        <span asp-validation-for="Number" class="text-danger"></span>
+
+                    </div>
+                    <div class="col-3">
+                        <input asp-for="Timeofday" class="form-control" />
+                        <span asp-validation-for="Timeofday" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="Створити раціон" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="FoodIndex" class="btn btn-danger w-75">Повернутися</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+

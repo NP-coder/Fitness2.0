@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Fitness.Models.Food>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Раціон</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Food" asp-action="FoodCreate" class="btn btn-primary">Додати новий раціон</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Продукт
+                    </th>
+                    <th>
+                        Грам
+                    </th>
+                    <th>
+                        Час
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var food in Model)
+                {
+                    <tr>
+                        <td width="33%">@food.Product.Name</td>
+                        <td width="33%">@food.Number</td>
+                        <td width="33%">@food.Timeofday</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No items created yet</p>
+    }
+
+</div>

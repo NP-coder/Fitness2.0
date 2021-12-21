@@ -1,0 +1,24 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<Fitness.Models.ApplicationUser> singInManager
+
+@if (singInManager.IsSignedIn(User))
+{
+    <form id="logoutForm" asp-action="Logoff" asp-controller="Account">
+        <ul class="nav navbar-nav">
+            <li class="nav-link">Hello @User.Identity.Name!</li>
+            <li class="nav-link"><a href="javascript:document.getElementById('logoutForm').submit()">  Log off</a></li>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            @*@Html.ActionLink("Sign Up", "Register", "User", routeValues: null, htmlAttributes: new { id = "registerLink" })*@
+            <a class="nav-link" id="registerLink" asp-controller="Account" asp-action="Register">Register</a>
+        </li>
+        <li>
+            @*@Html.ActionLink("Sign In", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink" })*@
+            <a class="nav-link" id="loginLink" asp-controller="Account" asp-action="Login">Sing In</a>
+        </li>
+    </ul>
+}

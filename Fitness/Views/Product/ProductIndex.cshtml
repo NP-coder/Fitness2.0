@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Fitness.Models.Product>
+
+
+    <div class="container p-3">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-primary">Продукти</h2>
+            </div>
+            <div class="col-6 text-right">
+                <a asp-controller="Product" asp-action="ProductCreate" class="btn btn-primary">Додати продукт</a>
+            </div>
+        </div>
+        <br/>
+
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-bordered table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>
+                            Назва
+                        </th>
+                        <th>
+                            Білки
+                        </th>
+                        <th>
+                            Жири
+                        </th>
+                        <th>
+                            Вуглеводи
+                        </th>
+                        <th>
+                            Калорії
+                        </th>
+                        <th>
+                            Грами
+                        </th>
+                        <th>
+                            Змінити
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td width="15%">@item.Name</td>
+                        <td width="15%">@item.Proteines</td>
+                        <td width="15%">@item.Fats</td>
+                        <td width="15%">@item.Carbohydrates</td>
+                        <td width="15%">@item.Calories</td>
+                        <td width="15%"><input name="gramm" type="number" class="navbar" value="1" /></td>
+                        <td width="15%">
+                            <div class="w-100 btn-group" role="group">
+                                <a asp-controller="Product" asp-action="ProductUpdate" asp-route-Id="@item.Id" class="btn btn-primary mx-1">Update</a>
+                                <a asp-controller="Product" asp-action="ProductDelete" asp-route-Id="@item.Id" class="btn btn-danger mx-1">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+
+            </table>
+        }
+        else
+        {
+            <p>Продуктів неіснує</p>
+        }
+
+    </div>
